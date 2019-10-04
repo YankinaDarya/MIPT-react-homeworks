@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import s from './TodoList.module.css';
 import MyTasks from "./MyTasks/MyTasks";
 
 const TodoList = (props) => {
