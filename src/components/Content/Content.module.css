@@ -1,0 +1,25 @@
+.layout {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative; /*.container*/
+}
+
+/*
+.AddTaskContainer {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative; !*.container*!
+}
+.TasksContainer {
+    border: 15px solid saddlebrown;
+    width: 1000px;
+    margin-top: 150px;
+    margin-left: 50px;
+    background-image: url("https://st3.depositphotos.com/7636160/12829/i/950/depositphotos_128296288-stock-photo-seamless-cork-texture-perfect-background.jpg");
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+}*/
