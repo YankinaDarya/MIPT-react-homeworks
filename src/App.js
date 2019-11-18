@@ -1,15 +1,20 @@
 import React from 'react';
-import './App.css';
-import Content from "./components/Content/Content";
+import style from './App.module.css';
+import TasksContent from "./components/TasksContent/TasksContent";
+import {Route, withRouter} from 'react-router-dom';
+import Projects from "./components/Projects/Projects";
+import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 
 const App = (props) => {
     return (
-        <div className="app-wrapper">
+        <div className={style.appWrapper}>
             <Header />
-            <Content store={props.store}/>
+            <Route exact path= '/' render={() => <MainPage />}/>
+            <Route path= '/projects' render={() => <Projects />}/>
+            <Route path= '/tasks/:projectId' render={() =><TasksContent />}/>
         </div>
     );
 };
 
-export default App;
+export default withRouter(App);
