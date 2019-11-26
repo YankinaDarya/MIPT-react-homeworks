@@ -1,0 +1,26 @@
+.item {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    text-align: center;
+    vertical-align: center;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 20px;
+}
+
+img.folder {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-right: 45px;
+}
+
+.folder:hover {
+    filter: drop-shadow(4px 4px 5px black);
+}
+
+.title {
+    font-size: 20px;
+    display: block;
+}

@@ -1,0 +1,13 @@
+.addProject {
+    margin: auto;
+    width: 100px;
+
+}
+
+.projectsLayout {
+    margin: 140px auto;
+    /*border: 1px solid red;*/
+    width: 80%;
+    text-align: center;
+    vertical-align: center;
+}
