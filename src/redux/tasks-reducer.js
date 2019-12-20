@@ -3,8 +3,9 @@ import {stopSubmit} from "redux-form";
 
 const NAME_SORT = 'NAME-SORT';
 const PRIORITY_SORT = 'PRIORITY-SORT';
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const TASKS_INITIALIZED_SUCCESS = 'TASKS-INITIALIZED-SUCCESS';
 const SET_ALL_TASKS = 'SET-ALL-TASKS';
+const TASKS_INITIALIZED_FALSE = 'TASKS-INITIALIZED-FALSE';
 /*const DELETE_TASK = 'DELETE-TASK';*/
 
 let initialState = {
@@ -32,11 +33,17 @@ const tasksReducer = (state = initialState, action) => {
                 tasks: [...state.tasks.sort((a, b) => (a.priority > b.priority) ? 1 : ((b.priority > a.priority) ? -1 : 0))]
             }
         }
-        case INITIALIZED_SUCCESS: {
+        case TASKS_INITIALIZED_SUCCESS: {
             return {
                 ...state,
                 initialized: true,
                 projectId: action.projectId
+            };
+        }
+        case TASKS_INITIALIZED_FALSE: {
+            return {
+                ...state,
+                initialized: false
             };
         }
         /*case DELETE_TASK: {
@@ -58,7 +65,8 @@ export default tasksReducer;
 export const nameSortActionCreator = () => ({type: NAME_SORT});
 export const prioritySortActionCreator = () => ({type: PRIORITY_SORT});
 export const setAllTasks = (tasks) => ({type: SET_ALL_TASKS, tasks});
-export const initializedSuccess = (projectId) => ({type: INITIALIZED_SUCCESS, projectId});
+export const tasksInitializedSuccess = (projectId) => ({type: TASKS_INITIALIZED_SUCCESS, projectId});
+export const tasksInitializedFalse = () => ({type: TASKS_INITIALIZED_FALSE});
 
 export const addNewTask = (name, description, priority, projectId) => (dispatch) => {
     priority = parseInt(priority, 10);
@@ -70,6 +78,7 @@ export const addNewTask = (name, description, priority, projectId) => (dispatch)
         }))
 };
 export const getMyTasks = (projectId) => (dispatch) => {
+    dispatch(tasksInitializedFalse());
     return getTasks(projectId)
         .then((response => {
             dispatch(setAllTasks(response));
@@ -80,6 +89,6 @@ export const initializeTasks = (projectId) => (dispatch) => {
     let promise = dispatch(getMyTasks(projectId));
     Promise.all([promise])
         .then(() => {
-            dispatch(initializedSuccess(projectId));
+            dispatch(tasksInitializedSuccess(projectId));
         });
 };
